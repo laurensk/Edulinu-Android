@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1047288421858",
+    "firebase_url": "https://edulinu-app.firebaseio.com",
+    "project_id": "edulinu-app",
+    "storage_bucket": "edulinu-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047288421858:android:6f04a1ac1490b64b37edbb",
+        "android_client_info": {
+          "package_name": "com.laurensk.edulinu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047288421858-egs13m1je1boc1n4uugr3fep4ito9fpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-X4fOhp3nD9Sz7kLBKb3lweEr46XvK3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047288421858-egs13m1je1boc1n4uugr3fep4ito9fpq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1047288421858-560ltifheb0d5ijotq3fduqj6rokv5d7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.laurensk.EdulinuApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

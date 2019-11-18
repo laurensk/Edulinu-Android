@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_teachertable">
+
+    <fragment
+        android:id="@+id/navigation_myedulinu"
+        android:name="com.laurensk.edulinu.ui.myEdulinu.MyEdulinu"
+        android:label="@string/title_myEdulinu"
+        tools:layout="@layout/fragment_myedulinu" />
+
+    <fragment
+        android:id="@+id/navigation_teachertable"
+        android:name="com.laurensk.edulinu.ui.teacherTable.TeacherTable"
+        android:label="@string/title_teacherTable"
+        tools:layout="@layout/fragment_teachertable" />
+
+    <fragment
+        android:id="@+id/navigation_mails"
+        android:name="com.laurensk.edulinu.ui.mails.Mails"
+        android:label="@string/title_mails"
+        tools:layout="@layout/fragment_mails" />
+
+    <fragment
+        android:id="@+id/navigation_apps"
+        android:name="com.laurensk.edulinu.ui.apps.Apps"
+        android:label="@string/title_apps"
+        tools:layout="@layout/fragment_apps" />
+
+    <fragment
+        android:id="@+id/navigation_more"
+        android:name="com.laurensk.edulinu.ui.more.More"
+        android:label="@string/title_more"
+        tools:layout="@layout/fragment_more" />
+
+</navigation>

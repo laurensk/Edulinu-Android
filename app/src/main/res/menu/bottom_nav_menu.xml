@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_myedulinu"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_myEdulinu" />
+
+    <item
+        android:id="@+id/navigation_teachertable"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_teacherTable" />
+
+    <item
+        android:id="@+id/navigation_mails"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_mails" />
+
+    <item
+        android:id="@+id/navigation_apps"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_apps" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_more" />
+
+</menu>

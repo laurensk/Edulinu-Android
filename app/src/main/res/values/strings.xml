@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Edulinu</string>
+    <string name="title_myEdulinu">My Edulinu</string>
+    <string name="title_teacherTable">Lehrer</string>
+    <string name="title_mails">Mails</string>
+    <string name="title_apps">Apps</string>
+    <string name="title_more">Mehr</string>
+</resources>
