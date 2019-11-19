@@ -1,5 +1,8 @@
 package com.laurensk.edulinu.ui.teacherTable;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -51,8 +54,6 @@ public class TeacherTable extends Fragment {
 
         final View view = inflater.inflate(R.layout.fragment_teachertable, container, false);
 
-        teacherListView = (ListView) view.findViewById(R.id.teacherListView);
-
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
         database.child("teachers").addValueEventListener(new ValueEventListener() {
@@ -72,7 +73,6 @@ public class TeacherTable extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.i("firebaseerror", "cancelled");
 
             }
         });
@@ -83,21 +83,62 @@ public class TeacherTable extends Fragment {
     }
 
 
-    public void updateList(View view, ArrayList<Teacher> teachersArrayList) {
+    public void updateList(View view, final ArrayList<Teacher> teachersArrayList) {
 
 
         //SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(),itemDataList,R.layout.teachertable_row, new String[]{"teacherImage","teacherName","teacherDesc"},new int[]{R.id.teacherImageView, R.id.teacherNameTextView, R.id.teacherDescTextView});
 
         TeacherTableListAdapter adapter = new TeacherTableListAdapter(getActivity(), teachersArrayList);
 
-        ListView listView = getActivity().findViewById(R.id.teacherListView);
+        ListView listView = view.findViewById(R.id.teacherListView);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
+            public void onItemClick(AdapterView<?> parent, View view, int index, long l) {
+
+                Teacher teacher = teachersArrayList.get(index);
+
+                TeacherTableWebView.teacherName = teacher.firstName + " " + teacher.lastName;
+
+                if (teacher.hasPortal) {
+                    TeacherTableWebView.teacherUrl = teacher.portalURL;
+                    startActivity(new Intent(getActivity(), TeacherTableWebView.class));
+                } else {
+
+                    AlertDialog.Builder noPortalAlertBuilder = new AlertDialog.Builder(getContext());
+                    noPortalAlertBuilder.setTitle("Kein Portal");
+                    noPortalAlertBuilder.setMessage(genderToText(teacher) + " " + teacher.lastName + " hat kein Portal.");
+                    noPortalAlertBuilder.setCancelable(true);
+
+                    noPortalAlertBuilder.setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog noPortalAlert = noPortalAlertBuilder.create();
+                    noPortalAlert.show();
+
+                }
+
+
+
                 Log.i("clickedTeacher", ""+index);
             }
         });
+    }
+
+    public String genderToText(Teacher teacher) {
+
+        if (teacher.gender == "w") {
+            return "Frau";
+        } else if (teacher.gender == "m") {
+            return "Herr";
+        }
+
+        return teacher.firstName;
     }
 }

@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/navigation_myedulinu"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/tabbaricon_myedulinu"
         android:title="@string/title_myEdulinu" />
 
     <item
@@ -14,17 +14,17 @@
 
     <item
         android:id="@+id/navigation_mails"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/tabbaricon_mail"
         android:title="@string/title_mails" />
 
     <item
         android:id="@+id/navigation_apps"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/tabbaricon_apps"
         android:title="@string/title_apps" />
 
     <item
         android:id="@+id/navigation_more"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/tabbaricon_more"
         android:title="@string/title_more" />
 
 </menu>
