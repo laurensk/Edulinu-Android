@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.teacherTable.TeacherTableWebView">
+        <activity android:name=".ui.teacherTable.TeacherTableWebViewActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_teachertable"
-        android:name="com.laurensk.edulinu.ui.teacherTable.TeacherTable"
+        android:name="com.laurensk.edulinu.ui.teacherTable.TeacherTableFragmentView"
         android:label="@string/title_teacherTable"
         tools:layout="@layout/fragment_teachertable" />
 

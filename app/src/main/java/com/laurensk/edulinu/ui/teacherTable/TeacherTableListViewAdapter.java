@@ -21,12 +21,12 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Map;
 
-class TeacherTableListAdapter extends ArrayAdapter<Teacher> {
+class TeacherTableListViewAdapter extends ArrayAdapter<Teacher> {
 
     Context context;
     ArrayList<Teacher> teacherArrayList;
 
-    TeacherTableListAdapter (Context context, ArrayList<Teacher> teacherArrayList) {
+    TeacherTableListViewAdapter(Context context, ArrayList<Teacher> teacherArrayList) {
         super(context, 0, teacherArrayList);
         this.context = context;
         this.teacherArrayList = teacherArrayList;

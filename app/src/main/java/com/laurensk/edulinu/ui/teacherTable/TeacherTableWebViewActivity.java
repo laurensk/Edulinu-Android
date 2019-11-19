@@ -21,12 +21,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.laurensk.edulinu.R;
 
-public class TeacherTableWebView extends AppCompatActivity {
+public class TeacherTableWebViewActivity extends AppCompatActivity {
 
     public static String teacherUrl;
     public static String teacherName;
 
-    private WebView webView = null;
+    private WebView teacherPanelWebView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +36,15 @@ public class TeacherTableWebView extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(teacherName);
 
-
         final ProgressDialog webViewProgressIndicator = ProgressDialog.show(this, "", "Laden...",true);
 
-        this.webView = findViewById(R.id.teacherWebView);
+        this.teacherPanelWebView = findViewById(R.id.teacherWebView);
 
-        WebSettings webSettings = webView.getSettings();
+        WebSettings webSettings = teacherPanelWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);;
 
-        webView.setWebViewClient(new WebViewClient() {
+        teacherPanelWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 if(webViewProgressIndicator!=null && webViewProgressIndicator.isShowing())
@@ -55,14 +54,14 @@ public class TeacherTableWebView extends AppCompatActivity {
             }
         });
 
-        webView.loadUrl(teacherUrl);
+        teacherPanelWebView.loadUrl(teacherUrl);
     }
 
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && this.webView.canGoBack()) {
-            this.webView.goBack();
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && this.teacherPanelWebView.canGoBack()) {
+            this.teacherPanelWebView.goBack();
             return true;
         }
 
