@@ -96,10 +96,7 @@ public class TeacherTable extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
-                Log.i("clickedTeacher", "xou clicked me lol");
-                Object clickItemObj = adapterView.getAdapter().getItem(index);
-                HashMap clickItemMap = (HashMap)clickItemObj;
-                Log.i("clickMap", clickItemMap.toString());
+                Log.i("clickedTeacher", ""+index);
             }
         });
     }

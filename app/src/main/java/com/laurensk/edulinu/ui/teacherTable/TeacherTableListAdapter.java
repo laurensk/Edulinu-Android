@@ -35,16 +35,24 @@ class TeacherTableListAdapter extends ArrayAdapter<Teacher> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Log.i("penis", "Got called");
+
+        Teacher teacher = teacherArrayList.get(position);
+
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = layoutInflater.inflate(R.layout.teachertable_row, parent, false);
         TextView teacherNameTextView = row.findViewById(R.id.teacherNameTextView);
         TextView teacherDescTextView = row.findViewById(R.id.teacherDescTextView);
         ImageView teacherImageView = row.findViewById(R.id.teacherImageView);
         // now set our resources on views
-        teacherNameTextView.setText(teacherArrayList.get(position).firstName);
-        teacherDescTextView.setText(teacherArrayList.get(position).teacherShort.toUpperCase());
-        Glide.with(context).asBitmap().load(teacherArrayList.get(position).imageURL).into(teacherImageView);
+        teacherNameTextView.setText(teacher.firstName + " " + teacher.lastName);
+
+        if(teacher.desc.isEmpty()) {
+            teacherDescTextView.setText(teacher.teacherShort.toUpperCase());
+        } else {
+            teacherDescTextView.setText(teacher.teacherShort.toUpperCase() + " - " + teacher.desc);
+        }
+
+        Glide.with(context).asBitmap().load(teacher.imageURL).into(teacherImageView);
 
         return row;
     }
