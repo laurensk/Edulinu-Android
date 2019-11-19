@@ -59,7 +59,7 @@ public class TeacherTable extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                List<Teacher> teachers = new ArrayList<>();
+                ArrayList<Teacher> teachers = new ArrayList<>();
 
                 for (DataSnapshot teachersSnapshot : dataSnapshot.getChildren()) {
                     Teacher teacher = teachersSnapshot.getValue(Teacher.class);
@@ -83,33 +83,15 @@ public class TeacherTable extends Fragment {
     }
 
 
-    public void updateList(View view, List<Teacher> teachers) {
+    public void updateList(View view, ArrayList<Teacher> teachersArrayList) {
 
 
-        ArrayList<Map<String,Object>> itemDataList = new ArrayList<Map<String,Object>>();
+        //SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(),itemDataList,R.layout.teachertable_row, new String[]{"teacherImage","teacherName","teacherDesc"},new int[]{R.id.teacherImageView, R.id.teacherNameTextView, R.id.teacherDescTextView});
 
-        for(Teacher t : teachers) {
-            Map<String,Object> listItemMap = new HashMap<String,Object>();
-            ImageView teacherImage = view.findViewById(R.id.teacherImageView);
-            Log.i("url",t.imageURL);
-            listItemMap.put("teacherImage", Glide.with(getActivity()).asBitmap().load(t.imageURL)); //does not work
-            listItemMap.put("teacherName", t.firstName + " " + t.lastName);
+        TeacherTableListAdapter adapter = new TeacherTableListAdapter(getActivity(), teachersArrayList);
 
-            String desc = t.teacherShort.toUpperCase();
-            if(!t.desc.isEmpty()) {
-                desc += " - " + t.desc;
-            }
-
-            listItemMap.put("teacherDesc", desc);
-            listItemMap.put("teacherId", t.id);
-            itemDataList.add(listItemMap);
-        }
-
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(),itemDataList,R.layout.teachertable_row,
-                new String[]{"teacherImage","teacherName","teacherDesc"},new int[]{R.id.teacherImageView, R.id.teacherNameTextView, R.id.teacherDescTextView});
-
-        ListView listView = view.findViewById(R.id.teacherListView);
-        listView.setAdapter(simpleAdapter);
+        ListView listView = getActivity().findViewById(R.id.teacherListView);
+        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -118,7 +100,6 @@ public class TeacherTable extends Fragment {
                 Object clickItemObj = adapterView.getAdapter().getItem(index);
                 HashMap clickItemMap = (HashMap)clickItemObj;
                 Log.i("clickMap", clickItemMap.toString());
-
             }
         });
     }
