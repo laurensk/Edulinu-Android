@@ -42,7 +42,7 @@ public class TeacherTableWebViewActivity extends AppCompatActivity {
 
         WebSettings webSettings = teacherPanelWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);;
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 
         teacherPanelWebView.setWebViewClient(new WebViewClient() {
             @Override
