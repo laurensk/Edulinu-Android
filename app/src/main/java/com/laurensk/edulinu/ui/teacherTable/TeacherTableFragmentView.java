@@ -62,9 +62,6 @@ public class TeacherTableFragmentView extends Fragment {
 
     private void updateList(View view, final ArrayList<Teacher> teachersArrayList) {
 
-
-        //SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(),itemDataList,R.layout.teachertable_row, new String[]{"teacherImage","teacherName","teacherDesc"},new int[]{R.id.teacherImageView, R.id.teacherNameTextView, R.id.teacherDescTextView});
-
         TeacherTableListViewAdapter adapter = new TeacherTableListViewAdapter(getActivity(), teachersArrayList);
 
         ListView listView = view.findViewById(R.id.teacherListView);

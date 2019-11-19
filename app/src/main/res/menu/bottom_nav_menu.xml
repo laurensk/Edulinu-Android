@@ -4,27 +4,27 @@
 
     <item
         android:id="@+id/navigation_myedulinu"
-        android:icon="@drawable/tabbaricon_myedulinu"
+        android:icon="@mipmap/tabbaricon_myedulinu"
         android:title="@string/title_myEdulinu" />
 
     <item
         android:id="@+id/navigation_teachertable"
-        android:icon="@drawable/tabbaricon_teachertable"
+        android:icon="@mipmap/tabbaricon_teachertable"
         android:title="@string/title_teacherTable" />
 
     <item
         android:id="@+id/navigation_mails"
-        android:icon="@drawable/tabbaricon_mail"
+        android:icon="@mipmap/tabbaricon_mail"
         android:title="@string/title_mails" />
 
     <item
         android:id="@+id/navigation_apps"
-        android:icon="@drawable/tabbaricon_apps"
+        android:icon="@mipmap/tabbaricon_apps"
         android:title="@string/title_apps" />
 
     <item
         android:id="@+id/navigation_more"
-        android:icon="@drawable/tabbaricon_more"
+        android:icon="@mipmap/tabbaricon_more"
         android:title="@string/title_more" />
 
 </menu>
