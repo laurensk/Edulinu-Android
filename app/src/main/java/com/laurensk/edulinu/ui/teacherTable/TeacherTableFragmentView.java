@@ -114,9 +114,9 @@ public class TeacherTableFragmentView extends Fragment {
 
     private String genderToText(Teacher teacher) {
 
-        if (teacher.gender == "w") {
+        if (teacher.gender.equals("w")) {
             return "Frau";
-        } else if (teacher.gender == "m") {
+        } else if (teacher.gender.equals("m")) {
             return "Herr";
         }
 
