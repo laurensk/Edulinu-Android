@@ -74,8 +74,6 @@ public class TeacherTableFragmentView extends Fragment {
                 Teacher teacher = teachersArrayList.get(index);
 
                 onClickList(teacher);
-
-
             }
         });
     }

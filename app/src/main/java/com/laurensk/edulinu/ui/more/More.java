@@ -16,7 +16,7 @@ public class More extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_myedulinu, container, false);
+        View view = inflater.inflate(R.layout.fragment_more, container, false);
 
 
 

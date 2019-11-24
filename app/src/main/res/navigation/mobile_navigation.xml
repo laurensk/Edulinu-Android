@@ -19,13 +19,13 @@
 
     <fragment
         android:id="@+id/navigation_mails"
-        android:name="com.laurensk.edulinu.ui.mails.Mails"
+        android:name="com.laurensk.edulinu.ui.mails.MailsFragmentView"
         android:label="@string/title_mails"
         tools:layout="@layout/fragment_mails" />
 
     <fragment
         android:id="@+id/navigation_apps"
-        android:name="com.laurensk.edulinu.ui.apps.Apps"
+        android:name="com.laurensk.edulinu.ui.apps.AppsFragmentView"
         android:label="@string/title_apps"
         tools:layout="@layout/fragment_apps" />
 
