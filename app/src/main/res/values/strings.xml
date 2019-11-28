@@ -5,4 +5,13 @@
     <string name="title_mails">Mails</string>
     <string name="title_apps">Apps</string>
     <string name="title_more">Mehr</string>
+    <string name="title_myEdulinuAddTeacher">Lehrer hinzufügen</string>
+
+    <string name="greeting_morning">Guten Morgen,</string>
+    <string name="greeting_day">Schönen Tag,</string>
+    <string name="greeting_evening">Guten Abend,</string>
+    <string name="greeting_night">Gute Nacht,</string>
+    <string name="greeting_welcome">Willkommen,</string>
+
+    <string name="myedulinu_emptylist">Klicke auf + um einen Lehrer hinzuzufügen</string>
 </resources>
