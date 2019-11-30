@@ -1,4 +1,6 @@
 <resources>
+
+    <!-- App -->
     <string name="app_name">Edulinu</string>
     <string name="title_myEdulinu">My Edulinu</string>
     <string name="title_teacherTable">Lehrer</string>
@@ -7,11 +9,40 @@
     <string name="title_more">Mehr</string>
     <string name="title_myEdulinuAddTeacher">Lehrer hinzufügen</string>
 
+    <!-- My Edulinu -->
     <string name="greeting_morning">Guten Morgen,</string>
     <string name="greeting_day">Schönen Tag,</string>
     <string name="greeting_evening">Guten Abend,</string>
     <string name="greeting_night">Gute Nacht,</string>
     <string name="greeting_welcome">Willkommen,</string>
-
     <string name="myedulinu_emptylist">Klicke auf + um einen Lehrer hinzuzufügen</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_section_myEdulinu_title">My Edulinu</string>
+    <string name="settings_section_teacher_title">Lehrer</string>
+    <string name="settings_show_teacherShort">Lehrerkürzel anzeigen</string>
+
+    <!-- Splashscreen -->
+    <string name="splashscreen_linu_image_desc">Edulinu</string>
+
+    <!-- Splashscreen Welcome -->
+    <string name="splashscreen_welcome_headline">Willkommen bei Edulinu</string>
+    <string name="splashscreen_welcome_title">Hallo, ich bin Linu!</string>
+    <string name="splashscreen_welcome_text">Zusammen werden wir jetzt die Edulinu-App einrichten, damit du gleich loslegen kannst. Als nächstes werde ich dich um deinen Namen fragen und dich darum bitten, deine aktuelle Klasse auszuwählen. Let\'s go!</string>
+    <string name="splashscreen_welcome_button">Ich bin bereit</string>
+
+    <!-- Splashscreen Form -->
+    <string name="splashscreen_form_headline">Über dich</string>
+    <string name="splashscreen_form_firstName">Vorname</string>
+    <string name="splashscreen_form_lastName">Nachname</string>
+    <string name="splashscreen_form_selectClass">Klasse auswählen</string>
+    <string name="splashscreen_form_button">Weiter</string>
+
+    <!-- Splashscreen Done -->
+    <string name="splashscreen_done_headline">Du hast es geschafft!</string>
+    <string name="splashscreen_done_title">Hallo!</string>
+    <string name="splashscreen_done_text">Jetzt kannst du die Edulinu-App zum ersten Mal  starten!\nViel Spaß und Erfolg 👍</string>
+    <string name="splashscreen_done_button">Let\'s go</string>
+
 </resources>

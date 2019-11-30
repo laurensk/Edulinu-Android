@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/settings_section_myEdulinu_title">
+
+        <SwitchPreferenceCompat
+            app:key="ElusSettingsMyEdShowTeacherShort"
+            app:title="@string/settings_show_teacherShort" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/settings_section_teacher_title">
+
+        <SwitchPreferenceCompat
+            app:key="ElusSettingsTeacherTableShowTeacherShort"
+            app:title="@string/settings_show_teacherShort" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

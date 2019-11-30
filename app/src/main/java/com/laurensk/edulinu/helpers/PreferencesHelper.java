@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class PreferencesHelper {
 
     public static void setArrayPrefs(String arrayName, ArrayList<String> array, Context mContext) {
-        SharedPreferences prefs = mContext.getSharedPreferences("preferencename", 0);
+        SharedPreferences prefs = mContext.getSharedPreferences("Elus", 0);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(arrayName +"_size", array.size());
         for(int i=0;i<array.size();i++)
@@ -16,7 +16,7 @@ public class PreferencesHelper {
         editor.apply();
     }
     public static ArrayList<String> getArrayPrefs(String arrayName, Context mContext) {
-        SharedPreferences prefs = mContext.getSharedPreferences("preferencename", 0);
+        SharedPreferences prefs = mContext.getSharedPreferences("Elus", 0);
         int size = prefs.getInt(arrayName + "_size", 0);
         ArrayList<String> array = new ArrayList<>(size);
         for(int i=0;i<size;i++)

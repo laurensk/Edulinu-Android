@@ -1,13 +1,12 @@
-package com.laurensk.edulinu.ui.teacherTable;
+package com.laurensk.edulinu.ui.more;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -17,38 +16,33 @@ import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
-import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 
 import com.laurensk.edulinu.R;
 
-public class TeacherTableWebViewActivity extends AppCompatActivity {
+public class MoreOpenURLActivity extends AppCompatActivity {
 
-    public static String teacherUrl;
-    public static String teacherName;
+    public static String moreEntryTitle;
+    public static String moreEntryUrl;
 
-    private WebView teacherPanelWebView = null;
+    private WebView moreUrlWebView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teacherwebview);
+        setContentView(R.layout.more_web_view);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(teacherName);
+        actionBar.setTitle(moreEntryTitle);
 
         final ProgressDialog webViewProgressIndicator = ProgressDialog.show(this, "", "Laden...",true);
 
-        this.teacherPanelWebView = findViewById(R.id.teacherWebView);
+        this.moreUrlWebView = findViewById(R.id.moreWebView);
 
-        WebSettings webSettings = teacherPanelWebView.getSettings();
+        WebSettings webSettings = moreUrlWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 
-        teacherPanelWebView.setWebViewClient(new WebViewClient() {
+        moreUrlWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 if(webViewProgressIndicator!=null && webViewProgressIndicator.isShowing())
@@ -68,14 +62,14 @@ public class TeacherTableWebViewActivity extends AppCompatActivity {
 
         });
 
-        teacherPanelWebView.loadUrl(teacherUrl);
+        moreUrlWebView.loadUrl(moreEntryUrl);
     }
 
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && this.teacherPanelWebView.canGoBack()) {
-            this.teacherPanelWebView.goBack();
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && this.moreUrlWebView.canGoBack()) {
+            this.moreUrlWebView.goBack();
             return true;
         }
 
@@ -87,6 +81,7 @@ public class TeacherTableWebViewActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                moreUrlWebView.destroy();
                 onBackPressed();
                 return true;
 

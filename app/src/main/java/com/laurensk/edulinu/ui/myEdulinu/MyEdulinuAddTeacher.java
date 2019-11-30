@@ -1,6 +1,8 @@
 package com.laurensk.edulinu.ui.myEdulinu;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.laurensk.edulinu.R;
 import com.laurensk.edulinu.helpers.PreferencesHelper;
+import com.laurensk.edulinu.helpers.TeacherHelpers;
 import com.laurensk.edulinu.models.Teacher;
 
 import java.util.ArrayList;
@@ -81,15 +84,56 @@ public class MyEdulinuAddTeacher extends AppCompatActivity {
         });
     }
 
-    private void onClickList(Teacher teacher) {
+    private void onClickList(final Teacher teacher) {
+
+        if (teacher.hasPortal) {
+
+            addTeacher(teacher);
+
+            finish();
+
+        } else {
+
+            AlertDialog.Builder noPanelWarningAlertBuilder = new AlertDialog.Builder(this);
+            noPanelWarningAlertBuilder.setTitle("Kein Portal");
+            noPanelWarningAlertBuilder.setMessage(TeacherHelpers.genderToText(teacher) + " " + teacher.lastName + " hat kein Portal.");
+            noPanelWarningAlertBuilder.setCancelable(true);
+
+            noPanelWarningAlertBuilder.setPositiveButton(
+                    "Abbrechen",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            noPanelWarningAlertBuilder.setNegativeButton(
+                    "Trotzdem hinzufügen",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            addTeacher(teacher);
+
+                            finish();
+                        }
+                    });
+
+            AlertDialog deleteTeacherAlert = noPanelWarningAlertBuilder.create();
+            deleteTeacherAlert.show();
+
+        }
+
+
+
+
+    }
+
+    private void addTeacher(Teacher teacher) {
 
         ArrayList<String> favTeachers = PreferencesHelper.getArrayPrefs("favTeachers", this);
         favTeachers.add(teacher.teacherShort);
 
         PreferencesHelper.setArrayPrefs("favTeachers", favTeachers, this);
-
-        finish();
-
 
     }
 

@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.laurensk.edulinu.R;
+import com.laurensk.edulinu.helpers.TeacherHelpers;
 import com.laurensk.edulinu.models.Teacher;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class TeacherTableFragmentView extends Fragment {
 
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-        database.child("teachers").addValueEventListener(new ValueEventListener() {
+        database.child("teachers").orderByChild("teacherShort").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -90,7 +91,7 @@ public class TeacherTableFragmentView extends Fragment {
 
             AlertDialog.Builder noPortalAlertBuilder = new AlertDialog.Builder(getContext());
             noPortalAlertBuilder.setTitle("Kein Portal");
-            noPortalAlertBuilder.setMessage(genderToText(teacher) + " " + teacher.lastName + " hat kein Portal.");
+            noPortalAlertBuilder.setMessage(TeacherHelpers.genderToText(teacher) + " " + teacher.lastName + " hat kein Portal.");
             noPortalAlertBuilder.setCancelable(true);
 
             noPortalAlertBuilder.setPositiveButton(
@@ -106,17 +107,6 @@ public class TeacherTableFragmentView extends Fragment {
 
         }
 
-    }
-
-    private String genderToText(Teacher teacher) {
-
-        if (teacher.gender.equals("w")) {
-            return "Frau";
-        } else if (teacher.gender.equals("m")) {
-            return "Herr";
-        }
-
-        return teacher.firstName;
     }
 
 }

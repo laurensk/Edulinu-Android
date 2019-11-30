@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- All classrooms -->
+    <string-array name="all_classrooms">
+        <item>Bitte auswählen</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>1C</item>
+        <item>1D</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>2C</item>
+        <item>2D</item>
+        <item>3A</item>
+        <item>3B</item>
+        <item>3C</item>
+        <item>3D</item>
+        <item>4A</item>
+        <item>4B</item>
+        <item>4C</item>
+        <item>4D</item>
+    </string-array>
+
+    <string-array name="all_classrooms_and_roles">
+        <item>Bitte auswählen</item>
+        <item>Ich bin ein Elternteil</item>
+        <item>1A</item>
+        <item>1B</item>
+        <item>1C</item>
+        <item>1D</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>2C</item>
+        <item>2D</item>
+        <item>3A</item>
+        <item>3B</item>
+        <item>3C</item>
+        <item>3D</item>
+        <item>4A</item>
+        <item>4B</item>
+        <item>4C</item>
+        <item>4D</item>
+        <item>Ich bin Lehrer/in</item>
+    </string-array>
+
+
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+</resources>

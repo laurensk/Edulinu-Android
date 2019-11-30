@@ -3,6 +3,7 @@ package com.laurensk.edulinu.ui.myEdulinu;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.laurensk.edulinu.R;
+import com.laurensk.edulinu.helpers.TeacherHelpers;
 import com.laurensk.edulinu.helpers.PreferencesHelper;
 import com.laurensk.edulinu.models.Teacher;
 import com.laurensk.edulinu.ui.teacherTable.TeacherTableWebViewActivity;
@@ -57,8 +59,6 @@ public class MyEdulinu extends Fragment {
         nameTextView = view.findViewById(R.id.nameTextView);
         dateTextView = view.findViewById(R.id.dateTextView);
         myEdulinuTeachersListView = view.findViewById(R.id.myEdulinuTeachersListView);
-
-        nameTextView.setText("Laurens");
 
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("teachers");
 
@@ -158,7 +158,7 @@ public class MyEdulinu extends Fragment {
 
             AlertDialog.Builder noPortalAlertBuilder = new AlertDialog.Builder(getContext());
             noPortalAlertBuilder.setTitle("Kein Portal");
-            noPortalAlertBuilder.setMessage(genderToText(teacher) + " " + teacher.lastName + " hat kein Portal.");
+            noPortalAlertBuilder.setMessage(TeacherHelpers.genderToText(teacher) + " " + teacher.lastName + " hat kein Portal.");
             noPortalAlertBuilder.setCancelable(true);
 
             noPortalAlertBuilder.setPositiveButton(
@@ -180,11 +180,11 @@ public class MyEdulinu extends Fragment {
 
         AlertDialog.Builder deleteTeacherAlertBuilder = new AlertDialog.Builder(getContext());
         deleteTeacherAlertBuilder.setTitle("Lehrer entfernen");
-        deleteTeacherAlertBuilder.setMessage("Möchtest du " + genderToText(teacher) + " " + teacher.lastName + " wirklich entfernen?");
+        deleteTeacherAlertBuilder.setMessage("Möchtest du " + teacher.firstName + " " + teacher.lastName + " wirklich entfernen?");
         deleteTeacherAlertBuilder.setCancelable(true);
 
         deleteTeacherAlertBuilder.setPositiveButton(
-                "Nein",
+                "Abbrechen",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -221,6 +221,19 @@ public class MyEdulinu extends Fragment {
     }
 
     private void dayTimeSetup() {
+
+        SharedPreferences prefs = getContext().getSharedPreferences("Elus", 0);
+        String userRole = prefs.getString("ElusUserRole", "student");
+
+        if (userRole.equals("student")) {
+            String firstName = prefs.getString("ElusFirstName", "noName");
+            nameTextView.setText(firstName);
+        } else {
+            String firstName = prefs.getString("ElusFirstName", "noName");
+            String lastName = prefs.getString("ElusLastName", "noName");
+            nameTextView.setText(firstName + " " + lastName);
+        }
+
 
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("EEEE, d. MMMM yyyy", Locale.GERMAN);
@@ -273,17 +286,6 @@ public class MyEdulinu extends Fragment {
 
         return matchedTeachers;
 
-    }
-
-    private String genderToText(Teacher teacher) {
-
-        if (teacher.gender.equals("w")) {
-            return "Frau";
-        } else if (teacher.gender.equals("m")) {
-            return "Herr";
-        }
-
-        return teacher.firstName;
     }
 
     @Override
