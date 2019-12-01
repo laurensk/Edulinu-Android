@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -115,7 +116,7 @@ public class MyEdulinu extends Fragment {
 
         MyEdulinuTeacherListViewAdapter adapter = new MyEdulinuTeacherListViewAdapter(getActivity(), teachersArrayList);
 
-        ListView listView = view.findViewById(R.id.myEdulinuTeachersListView);
+        ListView listView = (ListView) view.findViewById(R.id.myEdulinuTeachersListView);
 
         listView.setEmptyView(view.findViewById(R.id.myEdulinuEmptyListItem));
 
