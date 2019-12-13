@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 
 import com.laurensk.edulinu.R;
+import com.onesignal.OneSignal;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -98,10 +101,11 @@ public class SplashscreenFormActivity extends AppCompatActivity {
         editor.apply();
 
         Map<String, String> oneSignalTags = new HashMap<>();
-        oneSignalTags.put("ElusFirstName", firstName);
-        oneSignalTags.put("ElusLastName", lastName);
-        oneSignalTags.put("ElusClass", validClass);
-        oneSignalTags.put("ElusUserRole", userRole);
+        oneSignalTags.put("firstName", firstName);
+        oneSignalTags.put("lastName", lastName);
+        oneSignalTags.put("pmsClass", validClass);
+        oneSignalTags.put("userRole", userRole);
+        oneSignalTags.put("platform", "Android");
 
         sendFormEntriesToOneSignal(oneSignalTags);
 
@@ -109,7 +113,8 @@ public class SplashscreenFormActivity extends AppCompatActivity {
     }
 
     private void sendFormEntriesToOneSignal(Map<String, String> oneSignalTags) {
-        // TODO: OneSignal implementation
+
+        OneSignal.sendTags(new JSONObject(oneSignalTags));
 
         formFinished();
 

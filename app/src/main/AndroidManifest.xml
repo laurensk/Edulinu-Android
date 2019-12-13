@@ -5,21 +5,32 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".FirebaseInit"
+        android:name=".ApplicationInit"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.splashscreen.SplashscreenDoneActivity"></activity>
-        <activity android:name=".ui.splashscreen.SplashscreenFormActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".ui.splashscreen.SplashscreenDoneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.splashscreen.SplashscreenFormActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.splashscreen.SplashscreenWelcomeActivity"
-            android:label="Willkommen bei Edulinu" />
+            android:label="Willkommen bei Edulinu"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.more.MoreAppSettingsActivity"
-            android:label="@string/settings_title" />
+            android:label="@string/settings_title"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -28,6 +39,8 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
         <activity
@@ -52,10 +65,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <activity
+            android:name=".ui.appInfo.AppInfoActivity"
+            android:label="@string/app_info_title"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>

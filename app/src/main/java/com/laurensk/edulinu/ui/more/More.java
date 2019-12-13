@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.laurensk.edulinu.R;
 import com.laurensk.edulinu.helpers.PreferencesHelper;
 import com.laurensk.edulinu.models.MoreEntry;
+import com.laurensk.edulinu.ui.appInfo.AppInfoActivity;
 import com.laurensk.edulinu.ui.splashscreen.SplashscreenDoneActivity;
 import com.laurensk.edulinu.ui.splashscreen.SplashscreenWelcomeActivity;
 
@@ -259,7 +260,7 @@ public class More extends Fragment {
     }
 
     private void appInfo() {
-        // TODO: Build appInfo activity and start it here
+        startActivity(new Intent(getActivity(), AppInfoActivity.class));
     }
 
     private void openMail(String mail, String title) {

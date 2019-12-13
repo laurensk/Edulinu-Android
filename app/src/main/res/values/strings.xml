@@ -45,4 +45,8 @@
     <string name="splashscreen_done_text">Jetzt kannst du die Edulinu-App zum ersten Mal  starten!\nViel Spaß und Erfolg 👍</string>
     <string name="splashscreen_done_button">Let\'s go</string>
 
+    <!-- App Info -->
+    <string name="app_info_title">App-Infos</string>
+
+
 </resources>
