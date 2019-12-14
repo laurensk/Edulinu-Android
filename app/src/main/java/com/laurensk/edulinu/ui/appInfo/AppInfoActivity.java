@@ -2,6 +2,8 @@ package com.laurensk.edulinu.ui.appInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,8 +43,19 @@ public class AppInfoActivity extends AppCompatActivity {
 
                 AppInfoDatabase appInfoDatabase = dataSnapshot.getValue(AppInfoDatabase.class);
 
-                appInfoList.add(new AppInfo(0, "App-Version", "1.0"));
-                appInfoList.add(new AppInfo(1, "App-Build", "1.0"));
+                String versionName = "";
+                String versionCode = "";
+
+                try {
+                    PackageInfo pInfo = getApplicationContext().getPackageManager().getPackageInfo(getPackageName(), 0);
+                    versionName = pInfo.versionName;
+                    versionCode = String.valueOf(pInfo.versionCode);
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                appInfoList.add(new AppInfo(0, "App-Version", versionName));
+                appInfoList.add(new AppInfo(1, "App-Build", versionCode));
                 appInfoList.add(new AppInfo(2, "Datenbank-Version", getValueOrDefault(appInfoDatabase.appInfoDatabaseVersion, "Fehler beim Laden.")));
                 appInfoList.add(new AppInfo(3, "Datenbank-Root", getValueOrDefault(appInfoDatabase.appInfoDatabaseRoot, "Fehler beim Laden.")));
                 appInfoList.add(new AppInfo(4, "Entwickler", getValueOrDefault(appInfoDatabase.appInfoDeveloper, "Fehler beim Laden.")));

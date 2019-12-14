@@ -28,6 +28,7 @@ import com.laurensk.edulinu.R;
 import com.laurensk.edulinu.helpers.PreferencesHelper;
 import com.laurensk.edulinu.models.MoreEntry;
 import com.laurensk.edulinu.ui.appInfo.AppInfoActivity;
+import com.laurensk.edulinu.ui.news.NewsActivity;
 import com.laurensk.edulinu.ui.splashscreen.SplashscreenDoneActivity;
 import com.laurensk.edulinu.ui.splashscreen.SplashscreenWelcomeActivity;
 
@@ -275,7 +276,7 @@ public class More extends Fragment {
     }
 
     private void openNews() {
-        // TODO: Build openNews activity and start it here
+        startActivity(new Intent(getActivity(), NewsActivity.class));
     }
 
 

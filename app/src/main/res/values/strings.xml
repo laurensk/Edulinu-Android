@@ -48,5 +48,13 @@
     <!-- App Info -->
     <string name="app_info_title">App-Infos</string>
 
+    <!-- News -->
+    <string name="news_title">News</string>
+    <string name="news_detail_title">Nachricht</string>
+
+    <!-- News Pop Up -->
+    <string name="news_pop_up_title">News</string>
+    <string name="news_pop_up_button">Schließen</string>
+
 
 </resources>

@@ -7,7 +7,7 @@ public class News {
 
     public String author;
     public String desc;
-    public String imageURL;
+    public String imageUrl;
     public Integer newsId;
     public String text;
     public String title;
@@ -17,10 +17,10 @@ public class News {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public News(String author, String desc, String imageURL, Integer newsId, String text, String title) {
+    public News(String author, String desc, String imageUrl, Integer newsId, String text, String title) {
         this.author = author;
         this.desc = desc;
-        this.imageURL = imageURL;
+        this.imageUrl = imageUrl;
         this.newsId = newsId;
         this.text = text;
         this.title = title;

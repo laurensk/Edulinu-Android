@@ -10,10 +10,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.laurensk.edulinu.models.AppInfoDatabase;
+import com.laurensk.edulinu.models.Maintenance;
 import com.laurensk.edulinu.models.MoreEntry;
 import com.laurensk.edulinu.models.News;
 import com.laurensk.edulinu.ui.appInfo.AppInfoActivity;
+import com.laurensk.edulinu.ui.maintenance.MaintenanceActivity;
 import com.laurensk.edulinu.ui.more.MoreOpenURLActivity;
+import com.laurensk.edulinu.ui.news.NewsPopUpActivity;
 import com.onesignal.OSNotificationAction;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
@@ -31,7 +35,7 @@ public class ApplicationInit extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //Enable disk persistence
+        // Enable disk persistence
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         // OneSignal Initialization
@@ -46,6 +50,21 @@ public class ApplicationInit extends Application {
         oneSignalTags.put("userRole", prefs.getString("ElusUserRole", "noName"));
         oneSignalTags.put("platform", "Android");
         OneSignal.sendTags(new JSONObject(oneSignalTags));
+
+        // Check for maintenance mode
+        final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        database.child("maintenance").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Maintenance maintenance = dataSnapshot.getValue(Maintenance.class);
+                if (maintenance != null && maintenance.maintenanceMode) {
+                    startMaintenanceActivity(maintenance);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
 
     }
 
@@ -80,12 +99,18 @@ public class ApplicationInit extends Application {
 
     }
 
+    public void startMaintenanceActivity(Maintenance maintenance) {
+        MaintenanceActivity.maintenance = maintenance;
+        Intent maintenanceIntent = new Intent(this, MaintenanceActivity.class);
+        maintenanceIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(maintenanceIntent);
+    }
+
     public void startNewsActivity(News news) {
-        // TODO: Create NewsPopUpActivity and start it here
-        //NewsPopUpActivity.news = news;
-        //Intent newsOpenedIntent = new Intent(this, NewsPopUpActivity.class);
-        //newsOpenedIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //startActivity(newsOpenedIntent);
+        NewsPopUpActivity.news = news;
+        Intent newsOpenedIntent = new Intent(this, NewsPopUpActivity.class);
+        newsOpenedIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(newsOpenedIntent);
     }
 
     class NotificationHandler implements OneSignal.NotificationOpenedHandler {
@@ -100,10 +125,7 @@ public class ApplicationInit extends Application {
                 Integer newsId = data.optInt("openNewsWithId");
                 getNewsFromDatabase(newsId);
 
-
             }
-
-
 
         }
 
